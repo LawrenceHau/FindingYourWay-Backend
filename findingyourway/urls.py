@@ -9,4 +9,6 @@ urlpatterns = [
     path("adventures/<int:pk>", views.AdventureDetail.as_view(), name="adventure_detail"),
     path("paths/", views.PathList.as_view(), name="path_list"),
     path("paths/<int:pk>", views.PathDetail.as_view(), name="path_detail"),
+    path("routetableone/", views.RouteTableOneList.as_view(), name="routetableone_list"),
+    path("routetableone/<int:pk>", views.RouteTableOneDetail.as_view(), name="routetableone_detail"),
     ]

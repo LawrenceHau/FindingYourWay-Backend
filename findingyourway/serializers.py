@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Adventure, Path
+from .models import Adventure, Path, RouteTableOne
 
 class AdventureSerializer(serializers.HyperlinkedModelSerializer):
-    adventures = serializers.HyperlinkedRelatedField(
+    paths = serializers.HyperlinkedRelatedField(
         view_name="path_detail", many=True, read_only=True
     )
 
     class Meta:
         model = Adventure
-        fields = ("id", "adventure", "adventures")
+        fields = ("id", "adventurename", "photo_url", "adventuretext", "paths")
 
 
 class PathSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,4 +18,14 @@ class PathSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Path
-        fields = ("id", "path", "adventure")
+        fields = ("adventure", "id", "pathname", "photo_url", "pathtext")
+
+class RouteTableOneSerializer(serializers.HyperlinkedModelSerializer):
+    path = serializers.HyperlinkedRelatedField(
+        view_name="path_detail", many=False, read_only=True
+    )
+
+    class Meta:
+        model = RouteTableOne
+        fields = ("id","path", "routename", "photo_url", "routetext")
+
