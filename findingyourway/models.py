@@ -26,6 +26,7 @@ class RouteTableOne(models.Model):
         on_delete=models.CASCADE,
         related_name="routetableone"
     )
+
     routename = models.CharField(max_length=200, default="there is no path")
     routetext = models.CharField(max_length=100, default="no path text")
     photo_url = models.TextField(max_length=2000, null=True)
@@ -38,6 +39,7 @@ class RouteTableTwo(models.Model):
         on_delete=models.CASCADE,
         related_name="routetabletwo"
     )
+    
     routename = models.CharField(max_length=200, default="there is no path")
     routetext = models.CharField(max_length=100, default="no path text")
     photo_url = models.TextField(max_length=2000, null=True)
@@ -91,3 +93,4 @@ class NeutralEnding(models.Model):
     photo_url = models.TextField(max_length=2000, null=True)
     def __str__(self):
         return self.endingname
+

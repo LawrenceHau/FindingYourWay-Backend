@@ -37,6 +37,8 @@ class RouteTableOneSerializer(serializers.HyperlinkedModelSerializer):
     view_name="goodending_detail", many=True, read_only=True
     )
 
+
+
     class Meta:
         model = RouteTableOne
         fields = ("id","path", "routename", "photo_url", "routetext", "goodending")
