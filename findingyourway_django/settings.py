@@ -23,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'django-insecure-vo*z!l#e)mmm8-8an@=d6ynxf*1kj8w%4w3&60d50gdq*uo^u0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ['MODE'] == 'dev' else False
-
+DEBUG = True # if os.environ['MODE'] == 'dev' else False
+MODE = 'dev'
 ALLOWED_HOSTS = ['*']
 
 
@@ -49,13 +50,15 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
+
+ROOT_URLCONF = 'findingyourway_django.urls'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -112,10 +115,20 @@ WSGI_APPLICATION = 'findingyourway_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-  'default': dj_database_url.config(conn_max_age=600)
-}
+# DATABASES = {
+#   'default': dj_database_url.config(conn_max_age=600)
+# }
 
+DATABASES = {
+    'default':{
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'FindingYourWay',
+        'USER': 'LawrenceHau',
+        'PASSWORD':'Rjsemfwlfwk1',
+        'HOST': 'findingyourwaybackend.c73jukzmwxhy.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation

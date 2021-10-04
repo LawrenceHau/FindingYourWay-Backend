@@ -9,11 +9,6 @@ class Adventure(models.Model):
         return self.adventure
 
 class Path(models.Model):
-    adventure = models.ForeignKey(
-        Adventure,
-        on_delete=models.CASCADE,
-        related_name="paths"
-    )
     path = models.CharField(max_length=200, default="there is no path")
     text = models.CharField(max_length=100, default="no path text")
     photo_url = models.TextField(max_length=2000, null=True)
@@ -21,12 +16,6 @@ class Path(models.Model):
         return self.path
 
 class Route(models.Model):
-    path = models.ForeignKey(
-        Path,
-        on_delete=models.CASCADE,
-        related_name="routes"
-    )
-
     route = models.CharField(max_length=200, default="there is no path")
     text = models.CharField(max_length=100, default="no path text")
     photo_url = models.TextField(max_length=2000, null=True)
@@ -34,11 +23,7 @@ class Route(models.Model):
         return self.route
 
 class Ending(models.Model):
-    route = models.ForeignKey(
-        Route,
-        on_delete=models.CASCADE,
-        related_name="endings"
-    )
+
     ending = models.CharField(max_length=200, default="there is no ending")
     text = models.CharField(max_length=100, default="no path text")
     photo_url = models.TextField(max_length=2000, null=True)

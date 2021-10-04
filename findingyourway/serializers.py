@@ -1,33 +1,33 @@
 from rest_framework import serializers
-from .models import Adventure, Path, Route, Ending
+from .models import Adventure, Path, Ending, Route
 
 class AdventureSerializer(serializers.HyperlinkedModelSerializer):
-    paths = serializers.HyperlinkedRelatedField(
-        view_name="path_detail", many=True, read_only=True
-    )
+    # paths = serializers.HyperlinkedRelatedField(
+    #     view_name="path_detail", many=True, read_only=True
+    # )
 
     class Meta:
         model = Adventure
-        fields = ("id", "adventure", "photo_url", "text", "paths")
+        fields = ("id", "adventure", "photo_url", "text")
 
 
 class PathSerializer(serializers.HyperlinkedModelSerializer):
-    routes = serializers.HyperlinkedRelatedField(
-        view_name="route_detail", many=True, read_only=True
-    )
+    # routes = serializers.HyperlinkedRelatedField(
+    #     view_name="route_detail", many=True, read_only=True
+    # )
 
     class Meta:
         model = Path
-        fields = ("id", "path", "photo_url", "text", "routes")
+        fields = ("id", "path", "photo_url", "text")
 
 class RouteSerializer(serializers.HyperlinkedModelSerializer):
-    endings = serializers.HyperlinkedRelatedField(
-    view_name="ending_detail", many=True, read_only=True
-    )
+    # endings = serializers.HyperlinkedRelatedField(
+    # view_name="ending_detail", many=True, read_only=True
+    # )
 
     class Meta:
         model = Route
-        fields = ("id", "route", "text", "photo_url", "endings" )
+        fields = ("id", "route", "text", "photo_url")
 
 class EndingSerializer(serializers.HyperlinkedModelSerializer):
 
