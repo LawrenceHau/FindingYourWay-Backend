@@ -1,1 +1,1 @@
-web: gunicorn FindingYourWay-Backend.wsgi
+web: gunicorn FindingYourWay-Backend.wsgi --log-file -
